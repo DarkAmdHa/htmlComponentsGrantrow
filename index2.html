@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Add Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <style>
+      .your_guide {
+        padding: 60px 0 0 0;
+      }
+
+      .your_guide * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .your_guide .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+
+        max-width: 1170px;
+        padding: 0 15px;
+        float: none;
+      }
+
+      .home_all_title {
+        text-align: center;
+        padding: 0 0 47px;
+      }
+      .your_guide h3 {
+        color: #000;
+        font-size: 32px;
+        line-height: 35px;
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        font-family: "BodoniFLF";
+      }
+
+      .home_all_title h3 {
+        font-family: "Source Sans Pro";
+        margin: 41px auto 30px;
+        color: #000000;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 24px;
+        text-transform: uppercase;
+        padding: 0 62px;
+        display: table;
+        position: relative;
+      }
+
+      .home_all_title h3:before,
+      .home_all_title h3:after {
+        position: absolute;
+        content: "";
+        width: 50px;
+        height: 1px;
+        background-color: #000000;
+        top: 50%;
+        left: 0;
+      }
+
+      .home_all_title h3:after {
+        right: 0;
+        left: inherit;
+      }
+
+      h2 {
+        color: #000;
+        font-size: 46px;
+        line-height: 46px;
+        margin: 0;
+        padding: 0 0 30px;
+        font-weight: bold;
+        font-family: "BodoniFLF";
+      }
+      .home_all_title h2 {
+        color: #000000;
+        font-size: 46px;
+        font-weight: 700;
+        line-height: 46px;
+        max-width: 910px;
+        margin: 0 auto;
+      }
+
+      .business_tab_slider {
+        position: relative;
+      }
+
+      .business_tab_slider ul.tabs {
+        position: absolute;
+        top: -120px;
+        right: 50px;
+        background-color: #000000;
+        height: 49px;
+      }
+
+      .business_tab_slider ul.tabs li {
+        display: inline-block;
+        padding: 12px 20px;
+        opacity: 0.6;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+        overflow: hidden;
+        -webkit-transition: border-color 0.3s, color 0.3s;
+        -o-transition: border-color 0.3s, color 0.3s;
+        transition: border-color 0.3s, color 0.3s;
+        -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+        -o-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+        transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+      }
+
+      .business_tab_slider ul.tabs li.tab-link.current {
+        opacity: 1;
+      }
+
+      .business_tab_slider ul.tabs li {
+        display: inline-block;
+        padding: 12px 20px;
+        opacity: 0.6;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+        overflow: hidden;
+        -webkit-transition: border-color 0.3s, color 0.3s;
+        -o-transition: border-color 0.3s, color 0.3s;
+        transition: border-color 0.3s, color 0.3s;
+        -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+        -o-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+        transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+      }
+      .business_tab_slider .tab-content {
+        display: none;
+      }
+      .business_tab_slider .tab-content.current {
+        display: inherit;
+      }
+
+      .tab__slider .slick-prev {
+        left: 55px;
+      }
+
+      .slick-prev {
+        left: 15px;
+        z-index: 2;
+      }
+
+      .slick-arrow {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        font-size: 0;
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        height: auto;
+        line-height: normal;
+      }
+
+      .tab__slider .slick-prev {
+        left: 55px;
+      }
+
+      .slick-prev {
+        left: 15px;
+        z-index: 2;
+      }
+
+      .tab__slider .slick-list {
+        padding: 0 22% !important;
+      }
+
+      .tab__slider .slider__bx {
+        height: 460px;
+        background-position: center !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        text-align: center;
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: flex !important;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-transition: all 500ms ease-in-out;
+        -o-transition: all 500ms ease-in-out;
+        transition: all 500ms ease-in-out;
+        margin: 0 5px;
+      }
+
+      .tab__slider .slider__bx a {
+        width: 100%;
+      }
+
+      .tab__slider .slider__bx p {
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 28px;
+        text-transform: uppercase;
+        padding: 36px 15px;
+        width: 100%;
+        background-color: rgb(0 0 0 / 0.4);
+        -webkit-transition: all 500ms ease-in-out;
+        -o-transition: all 500ms ease-in-out;
+        transition: all 500ms ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="your_guide">
+      <div class="container">
+        <div class="home_all_title">
+          <h3>Expertise</h3>
+          <h2>Subject matter experts.</h2>
+        </div>
+      </div>
+      <div class="business_tab_slider">
+        <ul class="tabs">
+          <li class="tab-link current" data-tab="tab-1">Industries</li>
+          <li class="tab-link" data-tab="tab-2">Functions</li>
+        </ul>
+        <div id="tab-1" class="tab-content current">
+          <div class="tab__slider swiper-container">
+            <div class="swiper-wrapper">
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2020/08/Rectangle_Copy_20-1.png);
+                "
+              >
+                <a href="https://cooperfitch.ae/industrial-recruitment/"
+                  ><p>Industrial Recruitment</p></a
+                >
+              </div>
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2020/08/Expertise-22.png);
+                "
+              >
+                <a
+                  href="https://cooperfitch.ae/healthcare-life-sciences-recruitment/"
+                  ><p>Healthcare Recruitment Agency</p></a
+                >
+              </div>
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2020/08/Copy-of-HR-Trends.jpg);
+                "
+              >
+                <a href="https://cooperfitch.ae/financial-services-recruitment/"
+                  ><p>Financial Services Recruitment</p></a
+                >
+              </div>
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2020/08/Industries-1.png);
+                "
+              >
+                <a href="https://cooperfitch.ae/public-sector-recruitment/"
+                  ><p>Public Sector Recruitment</p></a
+                >
+              </div>
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2020/09/Copy-of-shutterstock_436884841.jpg);
+                "
+              >
+                <a
+                  href="https://cooperfitch.ae/professional-services-recruitment/"
+                  ><p>Professional Services Recruitment</p></a
+                >
+              </div>
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2021/07/shutterstock_203618407.jpg);
+                "
+              >
+                <a href="https://cooperfitch.ae/technology-recruitment/"
+                  ><p>Technology</p></a
+                >
+              </div>
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2020/08/Copy-of-website-1.jpg);
+                "
+              >
+                <a href="https://cooperfitch.ae/consumer-recruitment/"
+                  ><p>Consumer Goods Recruitment</p></a
+                >
+              </div>
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2021/09/shutterstock_41113390.jpg);
+                "
+              >
+                <a href="https://cooperfitch.ae/real-estate-recruitment/"
+                  ><p>Real Estate Recruitment</p></a
+                >
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+        <div id="tab-2" class="tab-content">
+          <div class="tab__slider swiper-container">
+            <div class="swiper-wrapper">
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2020/08/Rectangle_Copy_20-1.png);
+                "
+              >
+                <a href="https://cooperfitch.ae/board-c-level-recruitment/"
+                  ><p>Board &#038; C-level</p></a
+                >
+              </div>
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2020/10/shutterstock_1039097026.jpg);
+                "
+              >
+                <a
+                  href="https://cooperfitch.ae/information-technology-it-recruitment/"
+                  ><p>Information Technology</p></a
+                >
+              </div>
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2020/08/shutterstock_1027520491.jpg);
+                "
+              >
+                <a href="https://cooperfitch.ae/human-resources-recruitment/"
+                  ><p>Human Resources</p></a
+                >
+              </div>
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2020/09/shutterstock_567634105.jpg);
+                "
+              >
+                <a href="https://cooperfitch.ae/finance-recruitment/"
+                  ><p>Finance</p></a
+                >
+              </div>
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2020/08/Copy-of-Copy-of-website.jpg);
+                "
+              >
+                <a href="https://cooperfitch.ae/sales-marketing-recruitment/"
+                  ><p>Sales &#038; Marketing</p></a
+                >
+              </div>
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2020/08/Copy-of-shutterstock_1100540591.jpg);
+                "
+              >
+                <a href="https://cooperfitch.ae/legal-recruitment-firm/"
+                  ><p>Legal</p></a
+                >
+              </div>
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2020/08/our-solution-single_one.png);
+                "
+              >
+                <a href="https://cooperfitch.ae/operations-recruitment/"
+                  ><p>Operations</p></a
+                >
+              </div>
+              <div
+                class="slider__bx"
+                style="
+                  background: url(https://cooperfitch.ae/wp-content/uploads/2020/08/shutterstock_574879378.jpg);
+                "
+              >
+                <a
+                  href="https://cooperfitch.ae/strategy-management-consulting-recruitment/"
+                  ><p>Strategy</p></a
+                >
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper(".tab__slider", {
+          slidesPerView: 1,
+          spaceBetween: 10,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+
+        const tabs = document.querySelectorAll(".tab-link");
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            const tabId = tab.dataset.tab;
+
+            // Hide all tab contents
+            document.querySelectorAll(".tab-content").forEach((content) => {
+              content.classList.remove("current");
+            });
+            document.getElementById(tabId).classList.add("current");
+            // Remove 'current' class from all tabs
+            tabs.forEach((t) => t.classList.remove("current"));
+            // Add 'current' class to the clicked tab
+            tab.classList.add("current");
+            // Update the slider based on the active tab
+            swiper.slideTo(Array.from(tabs).indexOf(tab), 500, false);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

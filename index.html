@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .customerHeart * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .customerHeart {
+        font-family: "Source Sans Pro", sans-serif !important;
+        padding: 80px 0 0 0;
+        position: relative;
+        /* background-image: url(./images/counter_img.png); */
+        background-repeat: no-repeat;
+        background-position: bottom right;
+        background-size: 45%;
+      }
+
+      .customerHeart .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        float: none;
+        max-width: 1170px;
+        padding: 0 15px;
+      }
+
+      .customerHeart .everythingRow {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+      }
+
+      .customerHeart .everythingRow .leftSide {
+        width: 50%;
+      }
+
+      .customerHeart .everythingRow .leftSide p {
+        padding: 27px 0 54px;
+        text-align: justify;
+      }
+
+      .customerHeart p.homeHeading {
+        font-family: "BodoniFLF";
+        font-size: 46px;
+        font-weight: 700;
+        line-height: 46px;
+        text-align: left !important;
+      }
+
+      .customerHeart p {
+        color: #323232;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 28px;
+      }
+
+      .customerHeart .continueReading a {
+        color: #000000;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-bottom: 1px solid #000;
+        padding-bottom: 8px;
+        text-decoration: none;
+      }
+
+      .customerHeart .rightSide {
+        width: 45%;
+        padding: 90px 0 0;
+      }
+
+      .customerHeart .rightSide .happyClients {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+      }
+
+      .customerHeart .happyClients .happyBox {
+        text-align: center;
+      }
+
+      .customerHeart .happyBox h3 {
+        color: #000000;
+        font-size: 52px;
+        font-weight: 700;
+        padding: 0 0 10px;
+      }
+
+      .customerHeart h3 {
+        color: #000;
+        font-size: 32px;
+        line-height: 35px;
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        font-family: "BodoniFLF";
+      }
+    </style>
+  </head>
+  <body>
+    <section class="customerHeart">
+      <div class="container">
+        <div class="everythingRow">
+          <div class="leftSide">
+            <p class="homeHeading">
+              The customer is at the heart of everything we do.
+            </p>
+            <p>
+              As one of the leading recruitment agencies in the GCC, providing
+              recruitment, executive search, and HR advisory services, it is our
+              mission to help you source and attract the highest calibre talent
+              in the market.
+            </p>
+            <div class="continueReading">
+              <a href="https://cooperfitch.ae/about-us/" target="_blank">
+                Continue Reading
+              </a>
+            </div>
+          </div>
+          <div class="rightSide">
+            <div class="happyClients">
+              <div class="happyBox">
+                <h3 class="counter" data-value="11247">11,247</h3>
+                <p>Successful appointments</p>
+              </div>
+              <div class="happyBox">
+                <h3 class="counter" data-value="257">257</h3>
+                <p>Current assignments</p>
+              </div>
+              <div class="happyBox">
+                <h3 class="counter" data-value="2357">2,357</h3>
+                <p>Happy clients</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        function counterUp(target, start, end, duration) {
+          const range = end - start;
+          const increment = range / duration;
+          let current = start;
+          const interval = setInterval(() => {
+            current += increment;
+            const formattedNumber = formatNumber(Math.floor(current));
+            target.innerText = formattedNumber;
+            if (current >= end) {
+              target.innerText = formatNumber(end);
+              clearInterval(interval);
+            }
+          }, 10);
+        }
+
+        function formatNumber(number) {
+          return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        function incrementNumbers() {
+          const counters = document.querySelectorAll(".counter");
+          counters.forEach((counter, index) => {
+            const start = 0;
+            const end = parseInt(counter.getAttribute("data-value"), 10);
+            const duration = 250;
+            counterUp(counter, start, end, duration);
+          });
+        }
+        // function incrementNumbersOnScroll() {
+        //   let scrolled = false;
+
+        //   function isElementInViewport(el) {
+        //     const rect = el.getBoundingClientRect();
+        //     return (
+        //       rect.top >= 0 &&
+        //       rect.left >= 0 &&
+        //       rect.bottom <=
+        //         (window.innerHeight || document.documentElement.clientHeight) &&
+        //       rect.right <=
+        //         (window.innerWidth || document.documentElement.clientWidth)
+        //     );
+        //   }
+
+        //   function incrementNumbers() {
+        //     if (!scrolled) {
+        //       const counters = document.querySelectorAll(".counter");
+        //       counters.forEach((counter, index) => {
+        //         const start = 0;
+        //         const end = parseInt(counter.getAttribute("data-value"), 10);
+        //         const duration = 250;
+        //         counterUp(counter, start, end, duration);
+        //       });
+
+        //       scrolled = true;
+        //     }
+        //   }
+
+        //   window.addEventListener("scroll", () => {
+        //     if (isElementInViewport(document.querySelector(".customerHeart"))) {
+        //       incrementNumbers();
+        //     }
+        //   });
+        // }
+        incrementNumbers();
+        // document.addEventListener("DOMContentLoaded", incrementNumbersOnScroll);
+      </script>
+    </section>
+  </body>
+</html>
